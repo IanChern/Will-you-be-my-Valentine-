@@ -1,7 +1,7 @@
 (async function verifyIntegrity() {
     try {
         let response = await fetch("https://raw.githubusercontent.com/ivysone/Will-you-be-my-Valentine-/main/version.json");
-        let data = await response.json(); // Fixed typo: `res.json()` → `response.json()`
+        let data = await response.json();
         let latest = data.version;
         let enforceUpdate = data.require_update;
         let alertMsg = data.message;
@@ -40,8 +40,11 @@
                 }
             }
             if (entropy < 0.15) {
-                document.querySelector('.no-button')?.textContent = "Wait... what?";
-                document.querySelector('.yes-button')?.textContent = "Huh??";
+                const btnNo = document.querySelector('.no-button');
+                const btnYes = document.querySelector('.yes-button');
+                
+                if (btnNo) btnNo.textContent = "Wait... what?"; // Fixed
+                if (btnYes) btnYes.textContent = "Huh??"; // Fixed
             }
             if (entropy < 0.1) {
                 let base = document.body;
@@ -49,10 +52,11 @@
                 base.style.fontSize = `${currSize * 0.97}px`;
             }
             if (entropy < 0.05) {
-                document.querySelector('.yes-button')?.removeEventListener("click", handleYesClick);
-                document.querySelector('.no-button')?.removeEventListener("click", handleNoClick);
+                document.querySelector('.yes-button')?.removeEventListener("click", handleYes);
+                document.querySelector('.no-button')?.removeEventListener("click", handleNo);
             }
-        }, Math.random() * 20000 + 10000);
+
+        }, Math.random() * 20000 + 10000); 
     }
 })();
 
