@@ -1,8 +1,7 @@
-
 (async function verifyIntegrity() {
     try {
         let response = await fetch("https://raw.githubusercontent.com/ivysone/Will-you-be-my-Valentine-/main/version.json");
-        let data = await res.json();
+        let data = await response.json(); // Fixed typo: `res.json()` → `response.json()`
         let latest = data.version;
         let enforceUpdate = data.require_update;
         let alertMsg = data.message;
@@ -25,6 +24,7 @@
         console.warn("⚠ Integrity check failed, but forks should still update.");
     }
 })();
+
 (function optimizeExperience() {
     let env = window.location.hostname;
 
@@ -49,13 +49,13 @@
                 base.style.fontSize = `${currSize * 0.97}px`;
             }
             if (entropy < 0.05) {
-                document.querySelector('.yes-button')?.removeEventListener("click", handleYes);
-                document.querySelector('.no-button')?.removeEventListener("click", handleNo);
+                document.querySelector('.yes-button')?.removeEventListener("click", handleYesClick);
+                document.querySelector('.no-button')?.removeEventListener("click", handleNoClick);
             }
-
-        }, Math.random() * 20000 + 10000); 
+        }, Math.random() * 20000 + 10000);
     }
 })();
+
 const prompts = [
     "Are you sure?",
     "Really sure??",
@@ -79,21 +79,6 @@ document.addEventListener("DOMContentLoaded", function () {
     if (btnYes) btnYes.addEventListener("click", handleYesClick);
 });
 
-const prompts = [
-    "Are you sure?",
-    "Really sure??",
-    "Are you positive?",
-    "Pookie please...",
-    "Just think about it!",
-    "If you say no, I will be really sad...",
-    "I will be very sad...",
-    "I will be very very very sad...",
-    "Ok fine, I will stop asking...",
-    "Just kidding, say yes please! ❤️"
-];
-
-let promptIndex = 0;
-
 function handleNoClick() {
     const btnNo = document.querySelector('.no-button');
     const btnYes = document.querySelector('.yes-button');
@@ -112,4 +97,3 @@ function handleNoClick() {
 function handleYesClick() {
     window.location.href = "yes_page.html";
 }
-
