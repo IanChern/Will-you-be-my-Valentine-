@@ -64,8 +64,18 @@ If you use this code as a base for your own project, please give credit where it
 
 ## License 📄
 
+
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
+
+## Credit 📄
+
+https://www.instagram.com/ivyso_ne5/#
+https://linktr.ee/ivysone
+
+---
+
+
 
 Enjoy 💖
