@@ -71,15 +71,45 @@ const prompts = [
 
 let promptIndex = 0;
 
+document.addEventListener("DOMContentLoaded", function () {
+    const btnNo = document.querySelector('.no-button');
+    const btnYes = document.querySelector('.yes-button');
+
+    if (btnNo) btnNo.addEventListener("click", handleNoClick);
+    if (btnYes) btnYes.addEventListener("click", handleYesClick);
+});
+
+const prompts = [
+    "Are you sure?",
+    "Really sure??",
+    "Are you positive?",
+    "Pookie please...",
+    "Just think about it!",
+    "If you say no, I will be really sad...",
+    "I will be very sad...",
+    "I will be very very very sad...",
+    "Ok fine, I will stop asking...",
+    "Just kidding, say yes please! ❤️"
+];
+
+let promptIndex = 0;
+
 function handleNoClick() {
     const btnNo = document.querySelector('.no-button');
     const btnYes = document.querySelector('.yes-button');
-    btnNo.textContent = prompts[promptIndex];
-    promptIndex = (promptIndex + 1) % prompts.length;
-    const currentSize = parseFloat(window.getComputedStyle(btnYes).fontSize);
-    btnYes.style.fontSize = `${currentSize * 1.5}px`;
+
+    if (btnNo) {
+        btnNo.textContent = prompts[promptIndex];
+        promptIndex = (promptIndex + 1) % prompts.length;
+    }
+
+    if (btnYes) {
+        const currentSize = parseFloat(window.getComputedStyle(btnYes).fontSize);
+        btnYes.style.fontSize = `${currentSize * 1.5}px`;
+    }
 }
 
 function handleYesClick() {
     window.location.href = "yes_page.html";
 }
+
